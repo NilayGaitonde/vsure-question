@@ -1,4 +1,5 @@
 import tensorflow as tf
+import cv2
 
 class_names = ['downdog', 'tree', 'warrior1']
 img = tf.keras.preprocessing.image.load_img('imgs/Photo on 21-03-24 at 16.07.jpg', target_size=(256, 256))
@@ -12,7 +13,8 @@ def classify_yoga_pose(img,model):
     img_array = tf.expand_dims(img_array, 0) # Create a batch
     predictions = model.predict(img_array)
     prediction_class = class_names[predictions.argmax()]
-    print('Predictions:', predictions, 'Prediction:', prediction_class)
+    # print('Prediction:', prediction_class)
+    cv2.putText(img,f'{prediction_class} ({predictions.max()})',(10,20),cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
     return prediction_class, predictions.max()
 
 if __name__ == '__main__':
