@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from persondetection import check_objs,load_yolo, draw_boxes
 from yogaClassifier import classify_yoga_pose, load_yoga_model
-from media_pipe import PoseDetector
+from mediaPipe import PoseDetector
 
 vid = cv2.VideoCapture(1)
 # fourcc = cv2.VideoWriter_fourcc(*'mp4v')
